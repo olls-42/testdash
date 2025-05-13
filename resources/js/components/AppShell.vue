@@ -7,8 +7,6 @@ interface Props {
     variant?: 'header' | 'sidebar';
 }
 
-defineProps<Props>();
-
 const isOpen = usePage<SharedData>().props.sidebarOpen;
 </script>
 

@@ -26,6 +26,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Handle user buy experience
+     */
     public function buyFeature(User $user, Plan $plan )
     {
         if ($user->id == Auth::user()->id) {

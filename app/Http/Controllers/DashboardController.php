@@ -8,7 +8,6 @@ use App\Models\Domain;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
-use Nette\NotImplementedException;
 
 class DashboardController extends Controller
 {
@@ -18,17 +17,8 @@ class DashboardController extends Controller
     public function index()
     {
         return Inertia::render('Dashboard', [
-            //'user' => Auth::user(),
             'domains' => Auth::user()->domains()->get()->forPage(1, 5) //
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -36,33 +26,17 @@ class DashboardController extends Controller
      */
     public function store(StoreDomainRequest $request)
     {
-        // because we has complex validation of url
+        // because we has complex validation of url with or without http scheme prefix
         Validator::make($request->all(), ['domain' => 'unique:domains'])->validate();
 
         if ($validated = $request->validated()) {
-            $domain = Domain::create([
+            Domain::create([
                 'domain' => parse_url($validated['domain'], PHP_URL_HOST),
                 'user_id' => Auth::user()->id
             ]);
         }
 
         return to_route('dashboard');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Domain $domain)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Domain $domain)
-    {
-        //
     }
 
     /**
@@ -79,14 +53,4 @@ class DashboardController extends Controller
 
         return to_route('dashboard');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Domain $domain)
-    {
-        //
-        throw NotImplementedException();
-    }
-
 }

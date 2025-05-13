@@ -109,7 +109,6 @@ let visibleMenuItem = (item: NavItem) => {
                             <component v-if="item.icon" :is="item.icon" class="" />
                             {{ item.title }}
                         </Link>
-                        <!-- todo:remove me?div v-if="isCurrentRoute(item.href)" class="" ></div-->
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
@@ -120,7 +119,6 @@ let visibleMenuItem = (item: NavItem) => {
                             <component v-if="item.icon" :is="item.icon" class="" />
                             {{ item.title }}
                         </Link>
-                        <!-- todo:remove me?div v-if="isCurrentRoute(item.href)" class="" ></div-->
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
@@ -131,7 +129,6 @@ let visibleMenuItem = (item: NavItem) => {
                             <component v-if="item.icon" :is="item.icon" class="" />
                             {{ item.title }}
                         </Link>
-                        <!-- todo:remove me?div v-if="isCurrentRoute(item.href)" class="" ></div-->
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
